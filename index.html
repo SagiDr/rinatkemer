@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>רינת קמר | יועצת חינוכית ומטפלת CBT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink:        #1A0F30;
+            --plum:       #2E1558;
+            --plum-mid:   #4A2488;
+            --rose:       #B85970;
+            --rose-pale:  #E8B4C0;
+            --cream:      #F6F2EA;
+            --cream-alt:  #EDE7DA;
+            --text:       #261540;
+            --muted:      #7A6888;
+            --rule:       rgba(46,21,88,0.1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 8000;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.45);
+            transition: transform 0.25s, box-shadow 0.25s;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 24px rgba(37,211,102,0.6);
+        }
+        .whatsapp-float svg {
+            width: 2rem;
+            height: 2rem;
+            fill: #fff;
+        }
+
+        /* Film grain overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+            opacity: 0.028;
+            pointer-events: none;
+            z-index: 9000;
+        }
+
+        /* ══════════ NAV ══════════ */
+        nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 500;
+            padding: 1.5rem 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.4s, border-bottom 0.4s;
+        }
+        nav.scrolled {
+            background: rgba(246,242,234,0.94);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .nav-logo {
+            font-size: 0.9rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            text-decoration: none;
+            color: rgba(246,242,234,0.9);
+            transition: color 0.3s;
+        }
+        nav.scrolled .nav-logo { color: var(--plum); }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 2.25rem;
+        }
+        .nav-links a {
+            font-size: 0.82rem;
+            font-weight: 500;
+            text-decoration: none;
+            color: rgba(246,242,234,0.6);
+            letter-spacing: 0.03em;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: rgba(246,242,234,1); }
+        nav.scrolled .nav-links a { color: var(--muted); }
+        nav.scrolled .nav-links a:hover { color: var(--plum); }
+
+        .nav-pill {
+            border: 1px solid rgba(246,242,234,0.3) !important;
+            color: rgba(246,242,234,0.85) !important;
+            padding: 0.42rem 1.2rem;
+            border-radius: 50px;
+            transition: all 0.2s !important;
+        }
+        .nav-pill:hover { background: rgba(246,242,234,0.12) !important; border-color: rgba(246,242,234,0.5) !important; }
+        nav.scrolled .nav-pill { background: var(--plum) !important; color: white !important; border-color: transparent !important; }
+        nav.scrolled .nav-pill:hover { background: var(--plum-mid) !important; }
+
+        /* ══════════ HERO ══════════ */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        /* LEFT = text, RIGHT = photo (explicit to override RTL auto-placement) */
+        .hero-text { grid-column: 1; grid-row: 1; }
+        .hero-photo { grid-column: 2; grid-row: 1; }
+
+        .hero-text {
+            background: var(--plum);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 7rem 4.5rem 5.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Very subtle diagonal texture */
+        .hero-text::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: repeating-linear-gradient(
+                -55deg,
+                rgba(255,255,255,0.012) 0px,
+                rgba(255,255,255,0.012) 1px,
+                transparent 1px,
+                transparent 18px
+            );
+            pointer-events: none;
+        }
+
+        .hero-overline {
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--rose-pale);
+            margin-bottom: 2.25rem;
+            position: relative;
+        }
+
+        .hero-name {
+            font-size: clamp(5.5rem, 10vw, 9rem);
+            font-weight: 900;
+            color: var(--cream);
+            line-height: 0.9;
+            letter-spacing: -0.055em;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .hero-divider {
+            width: 36px;
+            height: 1.5px;
+            background: var(--rose);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .hero-creds {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 2.75rem;
+            position: relative;
+        }
+        .hero-cred-line {
+            font-size: 0.74rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: rgba(246,242,234,0.45);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .hero-cred-line::before {
+            content: '';
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--rose);
+            flex-shrink: 0;
+        }
+
+        .hero-tagline {
+            font-size: 0.97rem;
+            font-weight: 300;
+            color: rgba(246,242,234,0.58);
+            line-height: 1.9;
+            max-width: 300px;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: var(--cream);
+            color: var(--plum);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 0.85rem 2rem;
+            border-radius: 3px;
+            align-self: flex-start;
+            position: relative;
+            transition: background 0.22s, transform 0.22s;
+        }
+        .hero-btn:hover { background: #fff; transform: translateY(-2px); }
+
+        .hero-photo {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            filter: saturate(0.88) brightness(0.98);
+        }
+        /* Left-side vignette that bleeds into the text panel */
+        .hero-photo::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to left, transparent 65%, rgba(46,21,88,0.18) 100%);
+            z-index: 1;
+        }
+
+        /* Scroll cue */
+        .scroll-cue {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 3.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(246,242,234,0.28);
+            animation: cue 2.4s ease-in-out infinite;
+        }
+        .scroll-cue::after {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: rgba(246,242,234,0.2);
+        }
+        @keyframes cue {
+            0%, 100% { opacity: 0.35; transform: translateX(0); }
+            50%       { opacity: 0.9; transform: translateX(-4px); }
+        }
+
+        /* ══════════ ABOUT ══════════ */
+        .about {
+            background: var(--cream);
+            padding: 9rem 5.5rem;
+        }
+        .about-inner { max-width: 1180px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: 3.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .pull-quote {
+            font-size: clamp(1.7rem, 3.2vw, 2.75rem);
+            font-weight: 300;
+            color: var(--plum);
+            line-height: 1.48;
+            max-width: 860px;
+            margin-bottom: 5rem;
+            letter-spacing: -0.01em;
+        }
+        .pull-quote strong {
+            font-weight: 800;
+            color: var(--rose);
+        }
+
+        .about-rule {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin-bottom: 4.5rem;
+        }
+
+        .about-cols {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        .body-text {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--muted);
+            line-height: 1.95;
+        }
+        .body-text + .body-text { margin-top: 1.35rem; }
+
+        .cred-stack {
+            display: flex;
+            flex-direction: column;
+        }
+        .cred-entry {
+            padding: 1.35rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        .cred-entry:first-child { padding-top: 0; }
+        .cred-entry:last-child { border-bottom: none; }
+        .cred-name {
+            font-size: 0.87rem;
+            font-weight: 700;
+            color: var(--plum);
+            margin-bottom: 0.22rem;
+        }
+        .cred-detail {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.55;
+        }
+
+        /* ══════════ SERVICES ══════════ */
+        .services {
+            background: var(--plum);
+            padding: 8rem 5.5rem;
+        }
+        .services-inner { max-width: 1180px; margin: 0 auto; }
+
+        .section-label-light {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: rgba(246,242,234,0.28);
+            margin-bottom: 5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .section-label-light::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .svc-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 5rem;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.07);
+        }
+        .svc-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+        /* In RTL flex: first child goes to RIGHT, last to LEFT */
+        /* svc-body (first) → RIGHT | svc-logo-area (last) → LEFT */
+        .svc-body { flex: 1; min-width: 0; }
+
+        .svc-index {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: rgba(246,242,234,0.22);
+            margin-bottom: 1.25rem;
+        }
+
+        .svc-title {
+            font-size: clamp(1.9rem, 3vw, 2.5rem);
+            font-weight: 900;
+            color: var(--cream);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+        }
+
+        .svc-desc {
+            font-size: 0.93rem;
+            color: rgba(246,242,234,0.5);
+            line-height: 1.9;
+            max-width: 480px;
+            margin-bottom: 2rem;
+        }
+
+        .svc-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+        .svc-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            color: rgba(246,242,234,0.38);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 0.25rem 0.85rem;
+            border-radius: 50px;
+        }
+
+        .svc-logo-area {
+            flex-shrink: 0;
+            display: flex;
+            align-items: flex-start;
+            padding-top: 0.5rem;
+        }
+        .svc-logo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            /* Screen blend: logo's dark outer ring dissolves into plum bg */
+            mix-blend-mode: screen;
+            opacity: 0.88;
+        }
+
+        /* ══════════ CTA ══════════ */
+        .cta-band {
+            background: var(--ink);
+            padding: 9rem 5.5rem;
+            text-align: center;
+        }
+        .cta-inner { max-width: 680px; margin: 0 auto; }
+
+        .cta-pre {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: rgba(246,242,234,0.28);
+            margin-bottom: 2rem;
+        }
+        .cta-heading {
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            font-weight: 900;
+            color: var(--cream);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+            margin-bottom: 2rem;
+        }
+        .cta-sub {
+            font-size: 1rem;
+            font-weight: 300;
+            color: rgba(246,242,234,0.45);
+            line-height: 1.9;
+            margin-bottom: 4rem;
+        }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-light {
+            background: var(--cream);
+            color: var(--plum);
+            padding: 0.9rem 2.5rem;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.87rem;
+            letter-spacing: 0.06em;
+            transition: all 0.22s;
+            display: inline-block;
+        }
+        .btn-light:hover { background: #fff; transform: translateY(-2px); }
+        .btn-ghost {
+            border: 1px solid rgba(246,242,234,0.22);
+            color: rgba(246,242,234,0.6);
+            padding: 0.9rem 2.5rem;
+            border-radius: 3px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.87rem;
+            letter-spacing: 0.06em;
+            transition: all 0.22s;
+            display: inline-block;
+        }
+        .btn-ghost:hover { border-color: rgba(246,242,234,0.45); color: var(--cream); }
+
+        /* ══════════ CONTACT ══════════ */
+        .contact-section {
+            background: var(--cream-alt);
+            padding: 9rem 5.5rem;
+        }
+        .contact-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7rem;
+            align-items: start;
+        }
+
+        .contact-heading {
+            font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+            font-weight: 900;
+            color: var(--plum);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.25rem;
+        }
+        .contact-sub {
+            font-size: 0.97rem;
+            color: var(--muted);
+            line-height: 1.9;
+            margin-bottom: 3.5rem;
+        }
+
+        .contact-items { display: flex; flex-direction: column; gap: 1.75rem; }
+        .contact-item { display: flex; align-items: flex-start; gap: 1.1rem; }
+        .c-icon {
+            width: 42px; height: 42px;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.05rem;
+            flex-shrink: 0;
+        }
+        .c-lbl {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--rose);
+            margin-bottom: 0.3rem;
+        }
+        .c-val {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--plum);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .c-val:hover { color: var(--plum-mid); }
+
+        /* Form */
+        .contact-form {
+            background: white;
+            border-radius: 6px;
+            padding: 2.75rem;
+            box-shadow: 0 2px 32px rgba(26,15,48,0.06), 0 0 0 1px rgba(46,21,88,0.04);
+        }
+        .form-head { font-size: 1.15rem; font-weight: 800; color: var(--plum); margin-bottom: 0.3rem; }
+        .form-sub  { font-size: 0.8rem; color: var(--muted); margin-bottom: 2rem; }
+        .field { margin-bottom: 1rem; }
+        .field label {
+            display: block;
+            font-size: 0.73rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            color: var(--muted);
+            margin-bottom: 0.45rem;
+        }
+        .field input,
+        .field textarea {
+            width: 100%;
+            padding: 0.78rem 1rem;
+            border: 1px solid rgba(46,21,88,0.12);
+            border-radius: 5px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 0.91rem;
+            color: var(--text);
+            background: var(--cream);
+            direction: rtl;
+            resize: none;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .field input:focus,
+        .field textarea:focus {
+            border-color: var(--plum-mid);
+            box-shadow: 0 0 0 3px rgba(74,36,136,0.09);
+        }
+        .field textarea { height: 96px; }
+        .btn-submit {
+            width: 100%;
+            background: var(--plum);
+            color: white;
+            padding: 0.88rem;
+            border: none;
+            border-radius: 5px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: all 0.22s;
+        }
+        .btn-submit:hover { background: var(--plum-mid); }
+
+        /* ══════════ FOOTER ══════════ */
+        footer {
+            background: var(--ink);
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding: 2.25rem 5.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .foot-name {
+            font-size: 0.88rem;
+            font-weight: 800;
+            color: rgba(246,242,234,0.75);
+        }
+        .foot-sub {
+            font-size: 0.72rem;
+            color: rgba(246,242,234,0.28);
+            margin-top: 0.2rem;
+        }
+        .foot-links { display: flex; gap: 2rem; }
+        .foot-links a {
+            font-size: 0.75rem;
+            color: rgba(246,242,234,0.28);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .foot-links a:hover { color: rgba(246,242,234,0.65); }
+        .foot-copy { font-size: 0.72rem; color: rgba(246,242,234,0.2); }
+
+        /* ══════════ SCROLL REVEAL ══════════ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.72s ease, transform 0.72s ease;
+        }
+        .reveal.in { opacity: 1; transform: none; }
+        .d1 { transition-delay: 0.12s; }
+        .d2 { transition-delay: 0.24s; }
+        .d3 { transition-delay: 0.38s; }
+
+        /* ══════════ GALLERY ══════════ */
+        .gallery-section {
+            background: var(--cream);
+            padding: 8rem 5.5rem;
+        }
+        .gallery-inner { max-width: 1180px; margin: 0 auto; }
+
+        .gallery-heading {
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-weight: 900;
+            color: var(--plum);
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 3.5rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .cert-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(46,21,88,0.07);
+            cursor: pointer;
+            transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 50px rgba(46,21,88,0.12);
+            border-color: rgba(46,21,88,0.15);
+        }
+
+        /* Image cards */
+        .cert-img-thumb {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            filter: grayscale(15%);
+            transition: filter 0.25s;
+        }
+        .cert-card:hover .cert-img-thumb { filter: grayscale(0%); }
+
+        /* PDF cards */
+        .cert-pdf-preview {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--cream);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(46,21,88,0.07);
+        }
+        .cert-pdf-icon {
+            width: 52px;
+            height: 64px;
+            background: var(--plum);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .cert-pdf-icon::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 18px;
+            height: 18px;
+            background: var(--cream);
+            border-bottom-right-radius: 6px;
+        }
+        .cert-pdf-icon::after {
+            content: 'PDF';
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: white;
+            margin-top: 8px;
+        }
+        .cert-pdf-hint {
+            font-size: 0.72rem;
+            color: var(--muted);
+            font-weight: 500;
+        }
+
+        .cert-footer {
+            padding: 1rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            flex: 1;
+        }
+        .cert-title {
+            font-size: 0.83rem;
+            font-weight: 700;
+            color: var(--plum);
+            line-height: 1.4;
+        }
+        .cert-sub {
+            font-size: 0.73rem;
+            color: var(--muted);
+        }
+
+        /* ── Lightbox ── */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(16,6,36,0.92);
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            backdrop-filter: blur(6px);
+        }
+        .lightbox.open { opacity: 1; pointer-events: all; }
+
+        .lb-close {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.25rem;
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            line-height: 1;
+        }
+        .lb-close:hover { background: rgba(255,255,255,0.2); }
+
+        .lb-content {
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .lb-content img {
+            max-width: 100%;
+            max-height: 82vh;
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+        .lb-content iframe {
+            width: 100%;
+            height: 82vh;
+            border: none;
+            border-radius: 6px;
+        }
+        .lb-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.08em;
+        }
+
+        /* ══════════ MOBILE ══════════ */
+        @media (max-width: 820px) {
+            nav { padding: 1.1rem 1.5rem; }
+            .nav-links { display: none; }
+
+            /* Mobile hero: photo fills screen, text overlays bottom */
+            .hero {
+                display: block;
+                position: relative;
+                height: 100svh;
+                min-height: 580px;
+            }
+            .hero-photo {
+                position: absolute;
+                inset: 0;
+                height: 100%;
+            }
+            .hero-photo img { object-position: center 10%; }
+            .hero-photo::before { display: none; }
+            .hero-photo::after {
+                background: rgba(26,10,55,0.45);
+            }
+            .hero-text {
+                background: linear-gradient(
+                    to top,
+                    rgba(20,8,45,0.98) 0%,
+                    rgba(20,8,45,0.95) 55%,
+                    rgba(20,8,45,0.6) 80%,
+                    transparent 100%
+                ) !important;
+            }
+            .hero-text {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: 2.5rem 1.75rem 3.5rem;
+                background: none;
+                z-index: 2;
+            }
+            .hero-text::before { display: none; }
+            .hero-name { font-size: clamp(4rem, 16vw, 6rem); }
+            .hero-tagline { max-width: 100%; }
+            .scroll-cue { display: none; }
+
+            .about { padding: 5rem 1.75rem; }
+            .about-cols { grid-template-columns: 1fr; gap: 3rem; }
+
+            .services { padding: 5rem 1.75rem; }
+            .svc-row { flex-direction: column; gap: 2rem; }
+            .svc-logo { width: 110px; height: 110px; }
+
+            .gallery-section { padding: 5rem 1.75rem; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+            .lb-content { max-width: 100%; }
+            .lb-content iframe { height: 75vh; }
+
+            .cta-band { padding: 6rem 1.75rem; }
+
+            .contact-section { padding: 5rem 1.75rem; }
+            .contact-inner { grid-template-columns: 1fr; gap: 3.5rem; }
+
+            footer { padding: 2rem 1.75rem; flex-direction: column; text-align: center; }
+            .foot-links { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+    <a href="#" class="nav-logo">רינת קמר</a>
+    <ul class="nav-links">
+        <li><a href="#about">אודותיי</a></li>
+        <li><a href="#services">שירותים</a></li>
+        <li><a href="#contact">צור קשר</a></li>
+        <li><a href="#contact" class="nav-pill">לפגישת היכרות</a></li>
+    </ul>
+</nav>
+
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+
+    <div class="hero-text">
+        <p class="hero-overline">יועצת חינוכית ומטפלת</p>
+        <h1 class="hero-name">רינת<br>קמר</h1>
+        <div class="hero-divider"></div>
+        <div class="hero-creds">
+            <span class="hero-cred-line">CBT  טיפול קוגניטיבי התנהגותי</span>
+            <span class="hero-cred-line">מאסטר NLP</span>
+            <span class="hero-cred-line">הדרכת הורים  מכון אדלר</span>
+            <span class="hero-cred-line">קריית אונו</span>
+        </div>
+        <p class="hero-tagline">
+            מלווה ילדים, נוער, הורים וצוותים <br>
+            בדרך לשינוי אמיתי ומשמעותי
+        </p>
+        <a href="#contact" class="hero-btn">לפגישת היכרות &larr;</a>
+        <div class="scroll-cue">גלול</div>
+    </div>
+
+    <div class="hero-photo">
+        <img src="rinat-photo.jpeg" alt="רינת קמר" />
+    </div>
+
+</section>
+
+
+<!-- ══ ABOUT ══ -->
+<section class="about" id="about">
+    <div class="about-inner">
+
+        <p class="section-label reveal">אודותיי</p>
+
+        <p class="pull-quote reveal d1">
+            כל ילד מגיע עם <strong>כוחות פנימיים</strong> <br>
+            תפקידי לעזור לו לגלות אותם.
+        </p>
+
+        <hr class="about-rule reveal d2">
+
+        <div class="about-cols">
+            <div>
+                <p class="body-text reveal">
+                    שמי רינת קמר, יועצת חינוכית ומטפלת קוגניטיבית התנהגותית עם התמחות בילדים ונוער. שנים רבות של עבודה עם ילדים, נוער, הורים וצוותים חינוכיים לימדו אותי שהשינוי האמיתי מתחיל מתוך ולא מבחוץ.
+                </p>
+                <p class="body-text reveal d1">
+                    הגישה שלי משלבת את עוצמת ה-CBT עם כלי ה-NLP ושיטת אדלר להדרכת הורים  לכדי ליווי מקצועי, חם ואישי שנבנה סביב הצרכים הייחודיים של כל לקוח.
+                </p>
+            </div>
+
+            <div class="cred-stack reveal d2">
+                <div class="cred-entry">
+                    <div class="cred-name">יועצת חינוכית מוסמכת</div>
+                    <div class="cred-detail">ייעוץ לילדים, נוער וצוותים חינוכיים</div>
+                </div>
+                <div class="cred-entry">
+                    <div class="cred-name">מטפלת CBT מוסמכת</div>
+                    <div class="cred-detail">טיפול קוגניטיבי התנהגותי  ילדים ונוער</div>
+                </div>
+                <div class="cred-entry">
+                    <div class="cred-name">מאסטר NLP</div>
+                    <div class="cred-detail">תכנות נוירו-לשוני לשינוי דפוסי חשיבה</div>
+                </div>
+                <div class="cred-entry">
+                    <div class="cred-name">הדרכת הורים  מכון אדלר</div>
+                    <div class="cred-detail">הדרכת הורים מוסמכת על פי שיטת אדלר</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ══ SERVICES ══ -->
+<section class="services" id="services">
+    <div class="services-inner">
+
+        <p class="section-label-light reveal">תחומי טיפול</p>
+
+        <div class="svc-row reveal">
+            <div class="svc-body">
+                <p class="svc-index">01</p>
+                <h3 class="svc-title">טיפול רגשי<br>NLP &amp; CBT</h3>
+                <p class="svc-desc">
+                    טיפול קוגניטיבי התנהגותי משולב עם NLP לילדים ונוער. מזהים יחד דפוסי חשיבה, בונים כלים מעשיים ויוצרים שינוי אמיתי שמחזיק לאורך זמן  בקצב שנכון לכל ילד.
+                </p>
+                <div class="svc-tags">
+                    <span class="svc-tag">חרדות</span>
+                    <span class="svc-tag">קשיים רגשיים</span>
+                    <span class="svc-tag">ביטחון עצמי</span>
+                    <span class="svc-tag">ילדים ונוער</span>
+                </div>
+            </div>
+            <div class="svc-logo-area">
+                <img src="logo-therapy.png" alt="טיפול רגשי NLP CBT" class="svc-logo" />
+            </div>
+        </div>
+
+        <div class="svc-row reveal d1">
+            <div class="svc-body">
+                <p class="svc-index">02</p>
+                <h3 class="svc-title">הדרכת הורים</h3>
+                <p class="svc-desc">
+                    הדרכה מקצועית להורים על פי שיטת אדלר. בונים יחד כלים לתקשורת בריאה, הבנת הילד, הצבת גבולות מתוך אהבה  ויצירת שגרה משפחתית מגובשת ושמחה.
+                </p>
+                <div class="svc-tags">
+                    <span class="svc-tag">גבולות וחינוך</span>
+                    <span class="svc-tag">תקשורת</span>
+                    <span class="svc-tag">שיטת אדלר</span>
+                    <span class="svc-tag">דינמיקה משפחתית</span>
+                </div>
+            </div>
+            <div class="svc-logo-area">
+                <img src="logo-parenting.png" alt="הדרכת הורים" class="svc-logo" />
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery-section" id="credentials">
+    <div class="gallery-inner">
+        <p class="section-label reveal">הסמכות ותעודות</p>
+        <h2 class="gallery-heading reveal d1">ההכשרה המקצועית שלי</h2>
+        <div class="gallery-grid">
+
+            <div class="cert-card reveal" onclick="openLb('img','cert-adler.jpeg','הדרכת הורים | מכון אדלר')">
+                <img src="cert-adler.jpeg" alt="תעודת מכון אדלר" class="cert-img-thumb" />
+                <div class="cert-footer">
+                    <div class="cert-title">הדרכת הורים</div>
+                    <div class="cert-sub">מכון אדלר</div>
+                </div>
+            </div>
+
+            <div class="cert-card reveal d1" onclick="openLb('img','cert-cbt.jpeg','טיפול קוגניטיבי התנהגותי CBT')">
+                <img src="cert-cbt.jpeg" alt="תעודת CBT" class="cert-img-thumb" />
+                <div class="cert-footer">
+                    <div class="cert-title">טיפול קוגניטיבי התנהגותי</div>
+                    <div class="cert-sub">CBT | איט"ה ובר-אילן</div>
+                </div>
+            </div>
+
+            <div class="cert-card reveal d2" onclick="openLb('img','cert-nlp.jpeg','תעודת NLP שלב א+ב')">
+                <img src="cert-nlp.jpeg" alt="תעודת NLP" class="cert-img-thumb" />
+                <div class="cert-footer">
+                    <div class="cert-title">תעודת NLP</div>
+                    <div class="cert-sub">שלב א+ב</div>
+                </div>
+            </div>
+
+            <div class="cert-card reveal d1" onclick="openLb('img','cert-degree.jpeg','תואר ראשון')">
+                <img src="cert-degree.jpeg" alt="תואר ראשון" class="cert-img-thumb" />
+                <div class="cert-footer">
+                    <div class="cert-title">תואר ראשון</div>
+                    <div class="cert-sub"></div>
+                </div>
+            </div>
+
+            <div class="cert-card reveal d2" onclick="openLb('img','cert-counseling.jpeg','תעודת ייעוץ חינוכי')">
+                <img src="cert-counseling.jpeg" alt="תעודת ייעוץ חינוכי" class="cert-img-thumb" />
+                <div class="cert-footer">
+                    <div class="cert-title">ייעוץ חינוכי</div>
+                    <div class="cert-sub">תעודת הסמכה</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLb(event)">
+    <button class="lb-close" onclick="closeLb()">✕</button>
+    <div class="lb-content" id="lb-content"></div>
+</div>
+
+<!-- ══ CTA ══ -->
+<section class="cta-band">
+    <div class="cta-inner">
+        <p class="cta-pre reveal">הצעד הראשון</p>
+        <h2 class="cta-heading reveal d1">מוכנים<br>להתחיל?</h2>
+        <p class="cta-sub reveal d2">
+            הצעד הראשון הוא תמיד הכי חשוב.<br>
+            נדברים, נכיר, ונבנה יחד את הדרך הנכונה עבורכם.
+        </p>
+        <div class="cta-actions reveal d3">
+            <a href="tel:0506780225" class="btn-light">050-6780225</a>
+            <a href="mailto:kamer.rinat@gmail.com" class="btn-ghost">kamer.rinat@gmail.com</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══ CONTACT ══ -->
+<section class="contact-section" id="contact">
+    <div class="contact-inner">
+
+        <div>
+            <p class="section-label reveal">צור קשר</p>
+            <h2 class="contact-heading reveal d1">נשמח<br>לשמוע מכם</h2>
+            <p class="contact-sub reveal d2">
+                השאירו פרטים ואחזור אליכם בהקדם.<br>
+                לעיתים הצעד הראשון הוא הכי קשה  אנחנו כאן בשבילכם.
+            </p>
+            <div class="contact-items">
+                <div class="contact-item reveal d2">
+                    <div class="c-icon">📞</div>
+                    <div>
+                        <div class="c-lbl">טלפון</div>
+                        <a href="tel:0506780225" class="c-val">050-6780225</a>
+                    </div>
+                </div>
+                <div class="contact-item reveal d3">
+                    <div class="c-icon">✉️</div>
+                    <div>
+                        <div class="c-lbl">אימייל</div>
+                        <a href="mailto:kamer.rinat@gmail.com" class="c-val">kamer.rinat@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item reveal d3">
+                    <div class="c-icon">📍</div>
+                    <div>
+                        <div class="c-lbl">מיקום</div>
+                        <span class="c-val">קליניקה בקריית אונו</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form reveal d1">
+            <div class="form-head">השאירו הודעה</div>
+            <div class="form-sub">ונחזור אליכם בהקדם האפשרי</div>
+            <form onsubmit="handleSubmit(event)">
+                <div class="field">
+                    <label>שם מלא</label>
+                    <input type="text" placeholder="הכנס/י שם מלא" required />
+                </div>
+                <div class="field">
+                    <label>טלפון</label>
+                    <input type="tel" placeholder="050-0000000" required />
+                </div>
+                <div class="field">
+                    <label>אימייל (אופציונלי)</label>
+                    <input type="email" placeholder="your@email.com" />
+                </div>
+                <div class="field">
+                    <label>במה אוכל לעזור?</label>
+                    <textarea placeholder="ספר/י לי בקצרה..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">שלח הודעה</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div>
+        <div class="foot-name">רינת קמר</div>
+        <div class="foot-sub">יועצת חינוכית · מטפלת CBT · מדריכת הורים</div>
+    </div>
+    <div class="foot-links">
+        <a href="#about">אודותיי</a>
+        <a href="#services">שירותים</a>
+        <a href="#contact">צור קשר</a>
+    </div>
+    <div class="foot-copy">© 2025 רינת קמר · קריית אונו</div>
+</footer>
+
+
+<script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 70);
+    }, { passive: true });
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Hero entrance animation
+    const heroEls = [
+        '.hero-overline',
+        '.hero-name',
+        '.hero-divider',
+        '.hero-creds',
+        '.hero-tagline',
+        '.hero-btn'
+    ];
+    heroEls.forEach((sel, i) => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        el.style.cssText += `
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.7s ease ${0.2 + i * 0.1}s, transform 0.7s ease ${0.2 + i * 0.1}s;
+        `;
+    });
+    // Photo fade-in
+    const photo = document.querySelector('.hero-photo');
+    photo.style.cssText += 'opacity: 0; transition: opacity 1.1s ease 0.15s;';
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+        heroEls.forEach(sel => {
+            const el = document.querySelector(sel);
+            if (el) { el.style.opacity = '1'; el.style.transform = 'none'; }
+        });
+        photo.style.opacity = '1';
+    }));
+
+    // Lightbox
+    function openLb(type, src, label) {
+        const lb = document.getElementById('lightbox');
+        const content = document.getElementById('lb-content');
+        if (type === 'img') {
+            content.innerHTML = `<img src="${src}" alt="${label}"><div class="lb-label">${label}</div>`;
+        } else {
+            content.innerHTML = `<iframe src="${src}"></iframe><div class="lb-label">${label}</div>`;
+        }
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLb(e) {
+        if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lb-close')) return;
+        document.getElementById('lightbox').classList.remove('open');
+        document.getElementById('lb-content').innerHTML = '';
+        document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb({}); });
+
+    // Form feedback
+    function handleSubmit(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('.btn-submit');
+        btn.textContent = '✓ נשלח בהצלחה  תודה!';
+        btn.style.background = '#3a7d44';
+        btn.disabled = true;
+        setTimeout(() => {
+            btn.textContent = 'שלח הודעה';
+            btn.style.background = '';
+            btn.disabled = false;
+            e.target.reset();
+        }, 3500);
+    }
+</script>
+
+<a href="https://wa.me/972506780225" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+</a>
+
+</body>
+</html>
