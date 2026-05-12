@@ -164,17 +164,18 @@
         }
 
         .hero-overline {
-            font-size: 0.67rem;
-            font-weight: 700;
-            letter-spacing: 0.24em;
-            text-transform: uppercase;
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
             color: var(--rose-pale);
             margin-bottom: 2.25rem;
             position: relative;
+            line-height: 1.65;
+            max-width: 400px;
         }
 
         .hero-name {
-            font-size: clamp(5.5rem, 10vw, 9rem);
+            font-size: clamp(4rem, 7.5vw, 7rem);
             font-weight: 900;
             color: var(--cream);
             line-height: 0.9;
@@ -208,11 +209,7 @@
             gap: 0.6rem;
         }
         .hero-cred-line::before {
-            content: '';
-            width: 4px; height: 4px;
-            border-radius: 50%;
-            background: var(--rose);
-            flex-shrink: 0;
+            display: none;
         }
 
         .hero-tagline {
@@ -297,9 +294,9 @@
         .about-inner { max-width: 1180px; margin: 0 auto; }
 
         .section-label {
-            font-size: 0.65rem;
+            font-size: 0.88rem;
             font-weight: 700;
-            letter-spacing: 0.24em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--rose);
             margin-bottom: 3.5rem;
@@ -379,9 +376,9 @@
         .services-inner { max-width: 1180px; margin: 0 auto; }
 
         .section-label-light {
-            font-size: 0.65rem;
+            font-size: 0.88rem;
             font-weight: 700;
-            letter-spacing: 0.24em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             color: rgba(246,242,234,0.28);
             margin-bottom: 5rem;
@@ -470,9 +467,9 @@
         .cta-inner { max-width: 680px; margin: 0 auto; }
 
         .cta-pre {
-            font-size: 0.65rem;
+            font-size: 0.88rem;
             font-weight: 700;
-            letter-spacing: 0.24em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             color: rgba(246,242,234,0.28);
             margin-bottom: 2rem;
@@ -939,7 +936,7 @@
 <section class="hero">
 
     <div class="hero-text">
-        <p class="hero-overline">יועצת חינוכית ומטפלת</p>
+        <p class="hero-overline">יועצת חינוכית, פסיכותרפיסטית קוגניטיבית התנהגותית (CBT) התמחות ילדים ונוער, מאסטר ב-NLP, מנחת הורים וצוותים חינוכיים.</p>
         <h1 class="hero-name">רינת<br>קמר</h1>
         <div class="hero-divider"></div>
         <div class="hero-creds">
@@ -970,8 +967,8 @@
         <p class="section-label reveal">אודותיי</p>
 
         <p class="pull-quote reveal d1">
-            כל ילד מגיע עם <strong>כוחות פנימיים</strong> <br>
-            תפקידי לעזור לו לגלות אותם.
+            "כל מה שילד צריך זה <strong>מבוגר אחד שיאמין בו</strong>"<br>
+            <span style="font-size:0.58em; opacity:0.65; font-weight:400;">(הרב קרליבך)</span>
         </p>
 
         <hr class="about-rule reveal d2">
@@ -979,10 +976,13 @@
         <div class="about-cols">
             <div>
                 <p class="body-text reveal">
-                    שמי רינת קמר, יועצת חינוכית ומטפלת קוגניטיבית התנהגותית עם התמחות בילדים ונוער. שנים רבות של עבודה עם ילדים, נוער, הורים וצוותים חינוכיים לימדו אותי שהשינוי האמיתי מתחיל מתוך ולא מבחוץ.
+                    נעים מאוד, שמי רינת קמר יועצת חינוכית, פסיכותרפיסטית קוגניטיבית התנהגותית (CBT) התמחות ילדים ונוער, מאסטר ב-NLP, מנחת הורים וצוותים חינוכיים.
                 </p>
                 <p class="body-text reveal d1">
-                    הגישה שלי משלבת את עוצמת ה-CBT עם כלי ה-NLP ושיטת אדלר להדרכת הורים  לכדי ליווי מקצועי, חם ואישי שנבנה סביב הצרכים הייחודיים של כל לקוח.
+                    שנים רבות של עבודה עם ילדים, נוער, הורים וצוותים חינוכיים לימדו אותי עד כמה המשפט הזה נכון. מאחר וכל ילד בכל גיל זקוק שיראו אותו, יאמינו בו, יאפשרו לו לנסות ולהתנסות ויעודדו אותו.
+                </p>
+                <p class="body-text reveal d2">
+                    הדרך שלי להתמודדות עם אתגרים והשגת מטרות מתבססת על שילוב בין כלים שונים מגישת ה-CBT וה-NLP ובמקביל הדרכת הורים אשר ברובה נשענת על התיאוריה האדלרנית וזאת בליווי אישי, מקצועי, מכיל ונעים אשר נבנה סביב הצרכים של הילד או המתבגר. "לכל בעיה יש פתרון, שאם לא כן - לא הייתה בעיה" (אלברט איינשטיין).
                 </p>
             </div>
 
@@ -996,12 +996,12 @@
                     <div class="cred-detail">טיפול קוגניטיבי התנהגותי  ילדים ונוער</div>
                 </div>
                 <div class="cred-entry">
-                    <div class="cred-name">מאסטר NLP</div>
-                    <div class="cred-detail">תכנות נוירו-לשוני לשינוי דפוסי חשיבה</div>
+                    <div class="cred-name">מאסטר ב-NLP</div>
+                    <div class="cred-detail">שיטת טיפול המיועדת ליצירת שינוי בתבניות חשיבה והתנהגות, שיפור תקשורת והשגת מטרות.</div>
                 </div>
                 <div class="cred-entry">
-                    <div class="cred-name">הדרכת הורים  מכון אדלר</div>
-                    <div class="cred-detail">הדרכת הורים מוסמכת על פי שיטת אדלר</div>
+                    <div class="cred-name">הדרכת הורים מכון אדלר</div>
+                    <div class="cred-detail">הדרכת הורים מוסמכת ע"י התיאוריה של אדלר</div>
                 </div>
             </div>
         </div>
@@ -1021,17 +1021,18 @@
                 <p class="svc-index">01</p>
                 <h3 class="svc-title">טיפול רגשי<br>NLP &amp; CBT</h3>
                 <p class="svc-desc">
-                    טיפול קוגניטיבי התנהגותי משולב עם NLP לילדים ונוער. מזהים יחד דפוסי חשיבה, בונים כלים מעשיים ויוצרים שינוי אמיתי שמחזיק לאורך זמן  בקצב שנכון לכל ילד.
+                    טיפול קוגניטיבי התנהגותי (CBT) בשילוב כלים משיטת NLP. אשר מטרתו לזהות ביחד עם המטופל דפוסי חשיבה מגבילים/מעכבים, לבדוק אותם ובמידת הצורך ללמוד להחליף אותם במחשבות מועילות/מקדמות וזאת לצד זיהוי הרגשות שעולות לצד המחשבה אשר בסופו של דבר משפיעה על התנהגות. בסופו של דבר חשיפה, למידה ותרגול של התנהגויות חדשות.
                 </p>
                 <div class="svc-tags">
-                    <span class="svc-tag">חרדות</span>
-                    <span class="svc-tag">קשיים רגשיים</span>
-                    <span class="svc-tag">ביטחון עצמי</span>
-                    <span class="svc-tag">ילדים ונוער</span>
+                    <span class="svc-tag">חרדות ופוביות שונות</span>
+                    <span class="svc-tag">חרדת מבחנים</span>
+                    <span class="svc-tag">חרדה חברתית</span>
+                    <span class="svc-tag">קשיים בוויסות רגשי</span>
+                    <span class="svc-tag">העלאת הערך הביטחון והמסוגלות העצמית</span>
                 </div>
             </div>
             <div class="svc-logo-area">
-                <img src="logo-therapy.png" alt="טיפול רגשי NLP CBT" class="svc-logo" />
+                <img src="logo-parenting.png" alt="טיפול רגשי NLP CBT" class="svc-logo" />
             </div>
         </div>
 
@@ -1040,17 +1041,47 @@
                 <p class="svc-index">02</p>
                 <h3 class="svc-title">הדרכת הורים</h3>
                 <p class="svc-desc">
-                    הדרכה מקצועית להורים על פי שיטת אדלר. בונים יחד כלים לתקשורת בריאה, הבנת הילד, הצבת גבולות מתוך אהבה  ויצירת שגרה משפחתית מגובשת ושמחה.
+                    הדרכת הורים מקצועית אשר נשענת ברובה על התיאוריה האדלרינית. מטרתה להרחיב ולדייק את ארגז הכלים ההורי וזאת תוך ניתוח סיטואציות, הבנת הצורך שמאחורי ההתנהגות במטרה להקנות הרגלים חדשים שיחזירו את השקט והשלווה אליכם הביתה.
                 </p>
                 <div class="svc-tags">
-                    <span class="svc-tag">גבולות וחינוך</span>
-                    <span class="svc-tag">תקשורת</span>
-                    <span class="svc-tag">שיטת אדלר</span>
-                    <span class="svc-tag">דינמיקה משפחתית</span>
+                    <span class="svc-tag">גבולות</span>
+                    <span class="svc-tag">עידוד</span>
+                    <span class="svc-tag">מריבות אחים</span>
+                    <span class="svc-tag">בחירה</span>
+                    <span class="svc-tag">תיאום ציפיות</span>
                 </div>
             </div>
             <div class="svc-logo-area">
-                <img src="logo-parenting.png" alt="הדרכת הורים" class="svc-logo" />
+                <img src="logo-therapy.png" alt="הדרכת הורים" class="svc-logo" />
+            </div>
+        </div>
+
+        <div class="svc-row reveal d2">
+            <div class="svc-body">
+                <p class="svc-index">03</p>
+                <h3 class="svc-title">ייעוץ והדרכה<br>לצוותים חינוכיים</h3>
+                <p class="svc-desc">
+                    ליווי אישי או קבוצתי של צוותים חינוכיים אשר מטרתו העלאת סיטואציות מאתגרות מחיי היומיום במסגרת החינוכית, חשיפה, למידה ותרגול של כלים אשר יסייעו בהתמודדות עם אתגרים וחשיבה משותפת של פתרון בעיות.
+                </p>
+                <div class="svc-tags">
+                    <span class="svc-tag">בניית סדר יום</span>
+                    <span class="svc-tag">התערבות ותיווך</span>
+                    <span class="svc-tag">למידה מחוויה</span>
+                    <span class="svc-tag">שיח מעודד ומקדם</span>
+                </div>
+            </div>
+            <div class="svc-logo-area">
+                <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" style="opacity:0.75; mix-blend-mode:screen;">
+                    <circle cx="75" cy="75" r="73" fill="none" stroke="rgba(232,180,192,0.35)" stroke-width="1.5"/>
+                    <circle cx="75" cy="52" r="18" fill="none" stroke="rgba(232,180,192,0.6)" stroke-width="1.5"/>
+                    <circle cx="45" cy="90" r="14" fill="none" stroke="rgba(232,180,192,0.5)" stroke-width="1.5"/>
+                    <circle cx="105" cy="90" r="14" fill="none" stroke="rgba(232,180,192,0.5)" stroke-width="1.5"/>
+                    <line x1="75" y1="70" x2="55" y2="82" stroke="rgba(232,180,192,0.4)" stroke-width="1.5"/>
+                    <line x1="75" y1="70" x2="95" y2="82" stroke="rgba(232,180,192,0.4)" stroke-width="1.5"/>
+                    <line x1="45" y1="104" x2="45" y2="115" stroke="rgba(232,180,192,0.35)" stroke-width="1.5"/>
+                    <line x1="105" y1="104" x2="105" y2="115" stroke="rgba(232,180,192,0.35)" stroke-width="1.5"/>
+                    <line x1="75" y1="70" x2="75" y2="115" stroke="rgba(232,180,192,0.35)" stroke-width="1.5"/>
+                </svg>
             </div>
         </div>
 
@@ -1121,8 +1152,7 @@
         <p class="cta-pre reveal">הצעד הראשון</p>
         <h2 class="cta-heading reveal d1">מוכנים<br>להתחיל?</h2>
         <p class="cta-sub reveal d2">
-            הצעד הראשון הוא תמיד הכי חשוב.<br>
-            נדברים, נכיר, ונבנה יחד את הדרך הנכונה עבורכם.
+            הצעד הראשון הוא תמיד הכי חשוב, מוזמנים לפנות אלי, נדבר, נכיר ויחד נבנה את הדרך המתאימה לכם הגשמת המטרה שלכם.
         </p>
         <div class="cta-actions reveal d3">
             <a href="tel:0506780225" class="btn-light">050-6780225</a>
@@ -1138,10 +1168,9 @@
 
         <div>
             <p class="section-label reveal">צור קשר</p>
-            <h2 class="contact-heading reveal d1">נשמח<br>לשמוע מכם</h2>
+            <h2 class="contact-heading reveal d1">אשמח<br>לשמוע מכם</h2>
             <p class="contact-sub reveal d2">
-                השאירו פרטים ואחזור אליכם בהקדם.<br>
-                לעיתים הצעד הראשון הוא הכי קשה  אנחנו כאן בשבילכם.
+                השאירו פרטים ואחזור אליכם בהקדם.
             </p>
             <div class="contact-items">
                 <div class="contact-item reveal d2">
