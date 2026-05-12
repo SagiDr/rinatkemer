@@ -692,6 +692,15 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem;
         }
+        .gallery-grid-bottom {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem;
+            margin-top: 1.25rem;
+        }
+        .gallery-grid-bottom .cert-card {
+            width: calc((100% - 2 * 1.25rem) / 3);
+        }
 
         .cert-card {
             background: white;
@@ -1095,6 +1104,10 @@
                     <div class="cert-sub">שלב א+ב</div>
                 </div>
             </div>
+
+        </div>
+
+        <div class="gallery-grid-bottom">
 
             <div class="cert-card reveal d1" onclick="openLb('img','cert-degree.jpeg','תואר ראשון')">
                 <img src="cert-degree.jpeg" alt="תואר ראשון" class="cert-img-thumb" />
